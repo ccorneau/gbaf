@@ -8,6 +8,10 @@
     height: 200px !important;
 }
 
+h1 {
+    text-align: center;
+}
+
 .container_footer {
     display: flex;
     justify-content: center;
@@ -18,4 +22,51 @@ a {
     text-decoration: none;
     color: black;
     margin: 0 10px;
+}
+
+.fa-user:before {
+    content: "\f007";
+    margin-right: 20px;
+}
+
+#id_connect {
+    margin-right: 50px;
+    font-size: 0.75em;
+}
+
+footer {
+    /* position: absolute;
+    width: 100%;
+    bottom: 0px;
+    background-color: white; */
+}
+
+.acteur_container {
+    border: 1px solid lightgrey;
+    display: flex;
+    align-items: center;
+    margin: 20px 50px;
+}
+
+.acteur_logo>img {
+    border: 1px solid lightgrey;
+    max-width: 300px;
+    margin: 20px 50px;
+}
+
+.acteur_title {}
+
+.acteur_description {}
+
+button {
+    float: right;
+    margin: 5px 20px;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    min-height: 100%;
 }
