@@ -5,9 +5,10 @@ include('header.php');
 if (isset($_SESSION['username'])) {?>
 
     <body>
-        <h1>Le Groupement Banque Assurance Français​ (GBAF) est une fédération représentant les 6 grands groupes français</h1>
-        <img src="#" alt="">
-    
+        <h1>Le Groupement Banque Assurance Français​ (GBAF)</h1>
+        <img class="center" src="./img/gbaf-white.png" alt="Groupement Banque Assurance Français​ Illustration">
+        <h2>Une fédération représentant les 6 grands groupes français</h2>
+        <h3 class="title_listing">Nos partenaires :</h3>
     <?php
     // Connexion à la base de données
     try

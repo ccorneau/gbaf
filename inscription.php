@@ -1,5 +1,5 @@
 <?php
-	
+
 // header("location:" . $_SERVER['HTTP_REFERER']);
 
     $nom = $_POST['nom'];
@@ -18,7 +18,7 @@ catch(Exception $e)
 {
         die('Erreur : '.$e->getMessage());
 }
-
+if ($_POST['password'] == $_POST['password2']) {
     // Hachage du mot de passe
 $pass_hache = password_hash($_POST['password'], PASSWORD_DEFAULT);
     // Insertion
@@ -30,6 +30,11 @@ $req->execute(array(
     'password' => $pass_hache,
     'question' => $question,
     'reponse' => $reponse));
-    
+
     header('Location: login.php');
+} else {
+    $errorPassword = 'Vérifiez votre mot de passe car ils ne sont pas identique';
+    echo $errorPassword;
+    header('Location: login.php');
+}
 ?>

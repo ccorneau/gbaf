@@ -1,8 +1,11 @@
 <?php
 session_start();
 include('header.php');
+if (isset($_SESSION['username'])) {
 ?>
-        <p><a href="home.php">Retour à la liste des acteurs</a></p>
+
+
+        
  
 <?php
 // Connexion à la base de données
@@ -19,23 +22,16 @@ catch(Exception $e)
 $req = $bdd->prepare('SELECT * FROM acteur WHERE id_acteur = ?');
 $req->execute(array($_GET['id_acteur']));
 $donnees = $req->fetch();
-echo 'voici le ID_ACTEUR = ' . $_GET['id_acteur'];
+
 ?>
 
-<div class="news">
-<div class="acteur_logo">
-                <img src="./img/<?php echo $donnees['logo']; ?>" alt="">
-    </div>
-    <h3>
-        <?php echo htmlspecialchars($donnees['acteur']); ?>
-       
-    </h3>
-  
-    <p>
-    <?php
-    echo nl2br(htmlspecialchars($donnees['description']));
-    ?>
-    </p>
+<div class="container_page_acteur">
+<p><a href="home.php">Retour à la liste des acteurs</a></p>
+    <img class="page_acteur_logo" src="./img/<?php echo $donnees['logo']; ?>" alt="">
+        <h3><?php echo htmlspecialchars($donnees['acteur']);?></h3>
+        <p>
+        <?php echo nl2br(htmlspecialchars($donnees['description']));?>
+        </p>
 </div>
 
 <h2>Commentaires</h2>
@@ -50,30 +46,50 @@ $req->execute(array($_GET['id_acteur']));
 while ($commentaires = $req->fetch())
 {
 ?>
-<p><strong><?php echo htmlspecialchars($commentaires['id_user']); ?></strong> le <?php echo $commentaires['date_add']; ?></p>
+<div class="card commentaire">
+    <article class="card-body">
+<p><strong>Publié par : <?php echo htmlspecialchars($commentaires['id_user']); ?></strong><br> le <?php echo $commentaires['date_add']; ?></p>
 <p><?php echo nl2br(htmlspecialchars($commentaires['post'])); ?></p>
+</article>    
+</div> <!-- card.// -->
 <?php
 } // Fin de la boucle des commentaires
 $req->closeCursor();
 
 ?>
 
-<?php
-$date = date_create('2000-01-01');
-echo date_format($date, 'Y-m-d H:i:s');
-?>
 
+<div class="card commentaire">
+    <article class="card-body">
+        <p class="text-muted text-center">Ecrivez votre commentaire</p>
+        <form action="commentaire.php" method="GET">
+            <input type="hidden" value="<?php echo $donnees['id_acteur']; ?>" name="id_acteur">
+            <div class="form-group">
+                <div class="input-group">
+                    <input class="form-control" name="post" placeholder="Votre commentaire" type="textarea" rows="25" cols="50">
+                </div> <!-- input-group.// -->
+            </div> <!-- form-group// -->
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-block"> Publiez mon commentaire </button>
+            </div> <!-- form-group// -->
+        </form>
+    </article>    
+</div> <!-- card.// -->
 
-<form action="commentaire.php" method="GET">
+<!-- <form action="commentaire.php" method="GET">
     <h3>Mon commentaire</h3>
     <input type="hidden" value="<?php echo $donnees['id_acteur']; ?>" name="id_acteur">
     <input type="textarea" name="post"> <br>
     <input type="submit" value="Publiez mon commentaire">
-</form>
+</form> -->
 
 
-</body>
-</html>
+
+
 <?php
+
+} else {
+    header('Location: login.php');
+}
 include('footer.php');
 ?>

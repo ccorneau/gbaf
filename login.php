@@ -1,23 +1,40 @@
 <?php
 include('header.php');
 ?>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
 
 <body>
-    <h1>Bienvenue</h1>
-    <div class="home_login">
-        <h2>Veuillez vous authentifier</h2>
-        <form action="login.php" method="POST">
-            Identifiant <input type="text" name="username"> 
-            Mot de passe <input type="password" name="password"> 
-            <input type="submit" value="Connexion"> <br>
-        </form>
-        <div class="home_link">
-            <a href="./forget.php">Mot de passe oublié ?</a><br>
-            <a href="./register.php">S'inscrire</a>
-        </div>
-    </div>
+    <div class="card">
+        <article class="card-body">
+            <h4 class="card-title text-center mb-4 mt-1">Connexion</h4>
+            <hr>
+            <p class="text-muted text-center">Veuillez vous authentifier.</p>
+            <form action="login.php" method="POST">
+            <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                </div>
+                <input name="username" class="form-control" placeholder="Identifiant" type="text">
+            </div> <!-- input-group.// -->
+            </div> <!-- form-group// -->
+            <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                </div>
+                <input class="form-control" name="password" placeholder="******" type="password">
+            </div> <!-- input-group.// -->
+            </div> <!-- form-group// -->
+            <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block"> Connexion  </button>
+            </div> <!-- form-group// -->
+            <p class="text-center"><a href="./register.php" class="btn">S'inscrire</a> <br>
+            <a href="./forget.php" class="btn">Mot de passe oublié ?</a></p>
+            </form>
+        </article>
+    </div> <!-- card.// -->
 </body>
-
 
 <?php 
 if (isset($_POST['username']) AND isset($_POST['password']) ) {
@@ -33,15 +50,15 @@ if (isset($_POST['username']) AND isset($_POST['password']) ) {
         {
                 die('Erreur : '.$e->getMessage());
         }
+        
     $username = $_POST['username'];
     //  Récupération de l'utilisateur et de son pass hashé
-    $req = $bdd->prepare('SELECT id_user, password FROM account WHERE username = :username');
+    $req = $bdd->prepare('SELECT id_user, password, prenom, nom FROM account WHERE username = :username');
     $req->execute(array(
         'username' => $_POST['username']));
     $resultat = $req->fetch();
-    // var_dump($resultat['id_user']);
-    // var_dump($_POST['password']);
-    // var_dump($pass_hache);
+    $prenom = $resultat['prenom'];
+    $nom = $resultat['nom'];
 
     // Comparaison du pass envoyé via le formulaire avec la base
     $isPasswordCorrect = password_verify($_POST['password'], $pass_hache);
@@ -56,6 +73,8 @@ if (isset($_POST['username']) AND isset($_POST['password']) ) {
             session_start();
             $_SESSION['id'] = $resultat['id_user'];
             $_SESSION['username'] = $username;
+            $_SESSION['prenom'] = $resultat['prenom'];
+            $_SESSION['nom'] = $resultat['nom'];
             echo 'Vous êtes connecté !';
             header('Location: home.php');
         }

@@ -14,11 +14,10 @@ catch(Exception $e)
 
 
 
-$req = $bdd->prepare('INSERT INTO post(id_user, id_acteur, date_add, post) VALUES(:id_user, :id_acteur, :date_add, :post)');
+$req = $bdd->prepare('INSERT INTO post(id_user, id_acteur, date_add, post) VALUES(:id_user, :id_acteur, now(), :post)');
 $req->execute(array(
     'id_user' => $_SESSION['id'],
     'id_acteur' => $_GET['id_acteur'],
-    'date_add'=> '2003/01/22 01:00:00',
     'post' => $_GET['post']));
 
     header("location:" . $_SERVER['HTTP_REFERER']);
