@@ -15,8 +15,10 @@ include('header.php');
                 <input type="submit" value="Envoyez">
         </form>
     </div>
-
+</body>
 
 <?php
+// header("location:" . $_SERVER['HTTP_REFERER']); 
+// header('Location: login.php');
 include('footer.php');
 ?>

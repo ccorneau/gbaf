@@ -1,6 +1,6 @@
 <?php
 	
-header("location:" . $_SERVER['HTTP_REFERER']);
+// header("location:" . $_SERVER['HTTP_REFERER']);
 
     $nom = $_POST['nom'];
     $prenom  = $_POST['prenom'];
@@ -30,5 +30,6 @@ $req->execute(array(
     'password' => $pass_hache,
     'question' => $question,
     'reponse' => $reponse));
-
+    
+    header('Location: login.php');
 ?>

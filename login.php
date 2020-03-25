@@ -57,6 +57,7 @@ if (isset($_POST['username']) AND isset($_POST['password']) ) {
             $_SESSION['id'] = $resultat['id_user'];
             $_SESSION['username'] = $username;
             echo 'Vous êtes connecté !';
+            header('Location: home.php');
         }
         else {
             echo 'Mauvais identifiant ou mot de passe !';
@@ -66,7 +67,6 @@ if (isset($_POST['username']) AND isset($_POST['password']) ) {
 ?>
 
 <?php
-echo $_SESSION['username'];
 include('footer.php');
 ?>
 

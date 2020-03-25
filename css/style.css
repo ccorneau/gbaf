@@ -46,6 +46,7 @@ footer {
     display: flex;
     align-items: center;
     margin: 20px 50px;
+    border-radius: 5px;
 }
 
 .acteur_logo>img {
