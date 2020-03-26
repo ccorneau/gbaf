@@ -8,7 +8,7 @@ include('header.php');
         <article class="card-body">
             <h4 class="card-title text-center mb-4 mt-1">Connexion</h4>
             <hr>
-            <p class="text-muted text-center">Veuillez vous authentifier.</p>
+            <p class="text-muted text-center">Veuillez vous authentifier</p>
             <form action="login.php" method="POST">
             <div class="form-group">
             <div class="input-group">
@@ -50,7 +50,7 @@ if (isset($_POST['username']) AND isset($_POST['password']) ) {
         {
                 die('Erreur : '.$e->getMessage());
         }
-        
+
     $username = $_POST['username'];
     //  Récupération de l'utilisateur et de son pass hashé
     $req = $bdd->prepare('SELECT id_user, password, prenom, nom FROM account WHERE username = :username');

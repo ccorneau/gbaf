@@ -33,14 +33,32 @@ $donnees = $req->fetch();
         <?php echo nl2br(htmlspecialchars($donnees['description']));?>
         </p>
 </div>
+<?php
+// Récupération du billet
+$req = $bdd->prepare('SELECT COUNT(post) FROM post WHERE id_acteur = ?');
+$req->execute(array($_GET['id_acteur']));
+$nbCommentaires = $req->fetch();
 
-<h2>Commentaires</h2>
+if ($nbCommentaires[0] == 0) { ?>
+    <h2>Il n'y a pas encore de commentaire</h2> <?php 
+} else if ($nbCommentaires[0] == 1) { ?>
+    <h2><?php echo $nbCommentaires[0]; ?> commentaire</h2> <?php
+} else if ($nbCommentaires[0] > 1) { ?>
+    <h2><?php echo $nbCommentaires[0]; ?> commentaires</h2> <?php
+} ?>
+
 
 <?php
 $req->closeCursor(); // Important : on libère le curseur pour la prochaine requête
 
 // Récupération des commentaires
-$req = $bdd->prepare('SELECT * FROM post WHERE id_acteur = ? ORDER BY date_add');
+// $req = $bdd->prepare('SELECT * FROM post WHERE id_acteur = ? ORDER BY date_add');
+// $req->execute(array($_GET['id_acteur']));
+
+$req = $bdd->prepare('SELECT *
+FROM account
+INNER JOIN post
+ON account.id_user = post.id_user WHERE id_acteur = ? ORDER BY date_add');
 $req->execute(array($_GET['id_acteur']));
 
 while ($commentaires = $req->fetch())
@@ -48,8 +66,9 @@ while ($commentaires = $req->fetch())
 ?>
 <div class="card commentaire">
     <article class="card-body">
-<p><strong>Publié par : <?php echo htmlspecialchars($commentaires['id_user']); ?></strong><br> le <?php echo $commentaires['date_add']; ?></p>
+<p><strong>Publié par : <?php echo $commentaires['prenom']; ?></strong><br> le <?php echo $commentaires['date_add']; ?></p>
 <p><?php echo nl2br(htmlspecialchars($commentaires['post'])); ?></p>
+
 </article>    
 </div> <!-- card.// -->
 <?php

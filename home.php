@@ -26,21 +26,18 @@ if (isset($_SESSION['username'])) {?>
     while ($donnees = $req->fetch())
     {
     ?>
-
         <div class="list_container">
             <div class="acteur_container">
-            <div class="acteur_logo">
-                <img src="./img/<?php echo $donnees['logo']; ?>" alt="">
-            </div>
-            <div class="acteur_title">
-                <h3><?php echo $donnees['acteur']; ?></h3>
-                <div class="acteur_description">
-                    <?php echo $donnees['description']; ?>
+                <div class="acteur_logo">
+                    <img src="./img/<?php echo $donnees['logo']; ?>" alt="">
                 </div>
-                <a href="acteur.php?id_acteur=<?php echo $donnees['id_acteur']; ?>"><button>Lire la suite <?php echo $donnees['id_acteur']; ?></button></a>
-                
-                
-            </div>
+                <div class="acteur_title">
+                    <h3><?php echo $donnees['acteur']; ?></h3>
+                    <div class="acteur_description">
+                    <?php echo $donnees['description']; ?>
+                    </div>
+                    <a href="acteur.php?id_acteur=<?php echo $donnees['id_acteur']; ?>"><button>Lire la suite <?php echo $donnees['id_acteur']; ?></button></a>
+                </div>
             </div>
         </div>
     </body>
