@@ -36,7 +36,7 @@ if (isset($_SESSION['username'])) {?>
                     <div class="acteur_description">
                     <?php echo $donnees['description']; ?>
                     </div>
-                    <a href="acteur.php?id_acteur=<?php echo $donnees['id_acteur']; ?>"><button>Lire la suite <?php echo $donnees['id_acteur']; ?></button></a>
+                    <a href="acteur.php?id_acteur=<?php echo $donnees['id_acteur']; ?>"><button>Lire la suite</button></a>
                 </div>
             </div>
         </div>

@@ -74,7 +74,7 @@ include('header.php');
          
 
             <div class="form-group">
-            <button type="submit" class="btn btn-primary btn-block"> Connexion  </button>
+            <button type="submit" class="btn btn-primary btn-block"> Inscription  </button>
             </div> <!-- form-group// -->
             
             <p class="text-center"><a href="./register.php" class="bext-muted n">S'inscrire</a> <br>
@@ -85,7 +85,6 @@ include('header.php');
 </body>
 
 <?php
-// header("location:" . $_SERVER['HTTP_REFERER']); 
-// header('Location: login.php');
+
 include('footer.php');
 ?>

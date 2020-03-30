@@ -5,8 +5,9 @@ include('header.php');
 if (isset($_SESSION['username'])) {
     
     ?>
-
-
+<div class="container_page_acteur">
+<p><a href="home.php">Retour à la liste des acteurs</a></p>
+</div>
 
     <?php
    // Connexion à la base de données

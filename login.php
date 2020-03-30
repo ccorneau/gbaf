@@ -37,7 +37,7 @@ include('header.php');
 </body>
 
 <?php 
-if (isset($_POST['username']) AND isset($_POST['password']) ) {
+if (isset($_POST['username']) AND isset($_POST['password'])) {
     // Hachage du mot de passe
     $pass_hache = password_hash($_POST['password'], PASSWORD_DEFAULT);
         // Connexion à la base de données
@@ -57,18 +57,16 @@ if (isset($_POST['username']) AND isset($_POST['password']) ) {
     $req->execute(array(
         'username' => $_POST['username']));
     $resultat = $req->fetch();
-    $prenom = $resultat['prenom'];
-    $nom = $resultat['nom'];
+
+    $prenom = isset($resultat['prenom']);
+    $nom = isset($resultat['nom']);
 
     // Comparaison du pass envoyé via le formulaire avec la base
     $isPasswordCorrect = password_verify($_POST['password'], $pass_hache);
     // var_dump($isPasswordCorrect);
-    if (!$resultat)
-    {
-        echo 'Mauvais identifiant ou mot de passe !';
-    }
-    else
-    {
+    if (!$resultat) {
+        echo '<h2>Mauvais identifiant ou mot de passe !</h2>';
+    } else {
         if ($isPasswordCorrect) {
             session_start();
             $_SESSION['id'] = $resultat['id_user'];
@@ -77,9 +75,8 @@ if (isset($_POST['username']) AND isset($_POST['password']) ) {
             $_SESSION['nom'] = $resultat['nom'];
             echo 'Vous êtes connecté !';
             header('Location: home.php');
-        }
-        else {
-            echo 'Mauvais identifiant ou mot de passe !';
+        } else {
+            echo '<h2> Mauvais identifiant ou mot de passe ! </h2>';
         }
     }
 }
@@ -88,4 +85,3 @@ if (isset($_POST['username']) AND isset($_POST['password']) ) {
 <?php
 include('footer.php');
 ?>
-
