@@ -1,5 +1,6 @@
 <?php
 include('header.php');
+include('bdd.php');
 ?>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
 
@@ -38,18 +39,6 @@ include('header.php');
 
 <?php 
 if (isset($_POST['username']) AND isset($_POST['password'])) {
-    // Hachage du mot de passe
-    $pass_hache = password_hash($_POST['password'], PASSWORD_DEFAULT);
-        // Connexion à la base de données
-        try
-        {
-            $bdd = new PDO('mysql:host=localhost;dbname=gbaf;charset=utf8', 'root', 'root');
-            $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        }
-        catch(Exception $e)
-        {
-                die('Erreur : '.$e->getMessage());
-        }
 
     $username = $_POST['username'];
     //  Récupération de l'utilisateur et de son pass hashé
@@ -62,7 +51,7 @@ if (isset($_POST['username']) AND isset($_POST['password'])) {
     $nom = isset($resultat['nom']);
 
     // Comparaison du pass envoyé via le formulaire avec la base
-    $isPasswordCorrect = password_verify($_POST['password'], $pass_hache);
+    $isPasswordCorrect = password_verify($_POST['password'], $resultat['password']);
     // var_dump($isPasswordCorrect);
     if (!$resultat) {
         echo '<h2>Mauvais identifiant ou mot de passe !</h2>';

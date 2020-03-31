@@ -1,19 +1,24 @@
 <?php
 include('bdd.php');
 
-$req = $bdd->prepare('SELECT id_acteur, id_user FROM vote WHERE id_user = :id_user');
+$id_user = intval($_GET['id_user']);
+$id_acteur = intval($_GET['id_acteur']);
+$req = $bdd->prepare('SELECT id_acteur, id_user FROM vote WHERE id_user = :id_user AND id_acteur = :id_acteur ');
 $req->execute(array(
-    'id_user' => $_GET['id_user']));
+    ':id_user' => $id_user,
+    ':id_acteur' => $id_acteur));
 $resultat = $req->fetch();
+var_dump($resultat);
 
-if ($resultat['id_acteur'] == $_GET['id_acteur'] AND $resultat['id_user'] == $_GET['id_user']) {
+if ($resultat) {
         echo ' deja voté';
     } else {
         $req = $bdd->prepare('INSERT INTO vote(id_user, id_acteur, vote) VALUES(:id_user, :id_acteur, :vote)');
         $req->execute(array(
-            'id_user' => $_GET['id_user'],
-            'id_acteur' => $_GET['id_acteur'],
-            'vote' => 'like'));
+            ':id_user' => $id_user,
+            ':id_acteur' => $id_acteur,
+            ':vote' => 'like'));
 }
+
 
 header("location:" . $_SERVER['HTTP_REFERER']);

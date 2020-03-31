@@ -1,5 +1,6 @@
 <?php
 session_start();
+include('bdd.php');
 include('header.php');
 
 if (isset($_SESSION['username'])) {?>
@@ -9,18 +10,9 @@ if (isset($_SESSION['username'])) {?>
         <img class="center" src="./img/gbaf-white.png" alt="Groupement Banque Assurance Français​ Illustration">
         <h2>Une fédération représentant les 6 grands groupes français</h2>
         <h3 class="title_listing">Nos partenaires :</h3>
-    <?php
-    // Connexion à la base de données
-    try
-    {
-        $bdd = new PDO('mysql:host=localhost;dbname=gbaf;charset=utf8', 'root', 'root');
-    }
-    catch(Exception $e)
-    {
-            die('Erreur : '.$e->getMessage());
-    }
 
-    // On récupère les 5 derniers billets
+    <?php
+    // Récupération des acteurs en bdd
     $req = $bdd->query('SELECT * FROM acteur');
 
     while ($donnees = $req->fetch())
@@ -42,7 +34,7 @@ if (isset($_SESSION['username'])) {?>
         </div>
     </body>
     <?php
-    } // Fin de la boucle des billets
+    } // Fin de la boucle des acteurs
     $req->closeCursor();
 
 } else {
