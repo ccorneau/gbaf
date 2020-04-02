@@ -71,9 +71,18 @@ footer {
     margin: 20px 50px;
 }
 
-.acteur_title {}
+.acteur_title {
+    margin: 15px 0px;
+}
 
-.acteur_description {}
+.acteur_description {
+    text-align: justify;
+    padding-right: 20px;
+}
+
+.acteur_button {
+    margin-right: 20px;
+}
 
 button {
     float: right;
@@ -184,7 +193,69 @@ a {
 }
 
 .container_info_acteur {
-    display: flex;
+    /* display: flex;
     justify-content: space-evenly;
+    align-items: center; */
+    display: flex;
+    justify-content: space-between;
     align-items: center;
+    max-width: 875px;
+    margin: auto;
+}
+
+#new_commentaire {
+    display: none;
+    height: 200px;
+}
+
+i.fas.fa-thumbs-up {
+    color: green;
+}
+
+i.fas.fa-thumbs-down {
+    color: red;
+    transform: scaleX(-1);
+}
+
+.like>a {
+    margin: 0;
+}
+
+.like>a>i/last-child {
+    border: 5px solid green;
+}
+
+@media (max-width: 640px) {
+    .acteur_container {
+        flex-direction: column;
+    }
+    .acteur_title {
+        padding: 0 20px;
+    }
+    .container_header {
+        margin: 0px 0px;
+    }
+    .container_header {
+        flex-direction: column;
+    }
+    .nbCommentaire>h2 {
+        font-size: 1rem;
+    }
+    .container_link {
+        text-align: center;
+        position: relative;
+    }
+    #id_connect {
+        margin-right: 0px;
+        display: flex;
+        flex-direction: column;
+    }
+    .fa,
+    .fas {
+        font-weight: 900;
+        margin-left: 25px;
+    }
+    .page_acteur_logo {
+        max-width: 100%;
+    }
 }

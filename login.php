@@ -11,30 +11,36 @@ include('bdd.php');
             <hr>
             <p class="text-muted text-center">Veuillez vous authentifier</p>
             <form action="login.php" method="POST">
-            <div class="form-group">
-            <div class="input-group">
-                <div class="input-group-prepend">
-                    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                        </div>
+                        <input name="username" class="form-control" placeholder="Identifiant" type="text">
+                    </div>
+                    <!-- input-group.// -->
                 </div>
-                <input name="username" class="form-control" placeholder="Identifiant" type="text">
-            </div> <!-- input-group.// -->
-            </div> <!-- form-group// -->
-            <div class="form-group">
-            <div class="input-group">
-                <div class="input-group-prepend">
-                    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                <!-- form-group// -->
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                        </div>
+                        <input class="form-control" name="password" placeholder="******" type="password">
+                    </div>
+                    <!-- input-group.// -->
                 </div>
-                <input class="form-control" name="password" placeholder="******" type="password">
-            </div> <!-- input-group.// -->
-            </div> <!-- form-group// -->
-            <div class="form-group">
-            <button type="submit" class="btn btn-primary btn-block"> Connexion  </button>
-            </div> <!-- form-group// -->
-            <p class="text-center"><a href="./register.php" class="btn">S'inscrire</a> <br>
-            <a href="./forget.php" class="btn">Mot de passe oublié ?</a></p>
+                <!-- form-group// -->
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block"> Connexion  </button>
+                </div>
+                <!-- form-group// -->
+                <p class="text-center"><a href="./register.php" class="btn">S'inscrire</a> <br>
+                    <a href="./forget.php" class="btn">Mot de passe oublié ?</a></p>
             </form>
         </article>
-    </div> <!-- card.// -->
+    </div>
+    <!-- card.// -->
 </body>
 
 <?php 

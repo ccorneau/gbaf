@@ -26,9 +26,9 @@ if (isset($_SESSION['username'])) {?>
                 <div class="acteur_title">
                     <h3><?php echo $donnees['acteur']; ?></h3>
                     <div class="acteur_description">
-                    <?php echo $donnees['description']; ?>
+                    <?php echo substr($donnees['description'],0,215); ?>...
                     </div>
-                    <a href="acteur.php?id_acteur=<?php echo $donnees['id_acteur']; ?>"><button>Lire la suite</button></a>
+                    <a href="acteur.php?id_acteur=<?php echo $donnees['id_acteur']; ?>"><button class="acteur_button">Lire la suite</button></a>
                 </div>
             </div>
         </div>

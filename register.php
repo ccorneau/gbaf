@@ -71,8 +71,6 @@ include('header.php');
             </div> <!-- input-group.// -->
             </div> <!-- form-group// -->
 
-         
-
             <div class="form-group">
             <button type="submit" class="btn btn-primary btn-block"> Inscription  </button>
             </div> <!-- form-group// -->
@@ -85,6 +83,5 @@ include('header.php');
 </body>
 
 <?php
-
 include('footer.php');
 ?>

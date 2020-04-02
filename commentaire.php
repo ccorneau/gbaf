@@ -1,18 +1,6 @@
 <?php
 session_start();
-
-
-// Connexion à la base de données
-try
-{
-    $bdd = new PDO('mysql:host=localhost;dbname=gbaf;charset=utf8', 'root', 'root');
-}
-catch(Exception $e)
-{
-        die('Erreur : '.$e->getMessage());
-}
-
-
+include('bdd.php');
 
 $req = $bdd->prepare('INSERT INTO post(id_user, id_acteur, date_add, post) VALUES(:id_user, :id_acteur, now(), :post)');
 $req->execute(array(
@@ -20,6 +8,6 @@ $req->execute(array(
     'id_acteur' => $_GET['id_acteur'],
     'post' => $_GET['post']));
 
-    header("location:" . $_SERVER['HTTP_REFERER']);
+header("location:" . $_SERVER['HTTP_REFERER']);
 
 ?>
