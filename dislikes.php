@@ -8,7 +8,6 @@ $req->execute(array(
     ':id_user' => $id_user,
     ':id_acteur' => $id_acteur));
 $resultat = $req->fetch();
-var_dump($resultat);
 
 if ($resultat) {
         echo ' deja voté';
@@ -19,6 +18,5 @@ if ($resultat) {
             ':id_acteur' => $id_acteur,
             ':vote' => 'dislike'));
 }
-
 
 header("location:" . $_SERVER['HTTP_REFERER']);

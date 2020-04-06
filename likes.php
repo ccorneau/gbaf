@@ -8,17 +8,15 @@ $req->execute(array(
     ':id_user' => $id_user,
     ':id_acteur' => $id_acteur));
 $resultat = $req->fetch();
-var_dump($resultat);
 
 if ($resultat) {
-        echo ' deja voté';
-    } else {
-        $req = $bdd->prepare('INSERT INTO vote(id_user, id_acteur, vote) VALUES(:id_user, :id_acteur, :vote)');
-        $req->execute(array(
-            ':id_user' => $id_user,
-            ':id_acteur' => $id_acteur,
-            ':vote' => 'like'));
+    echo ' deja voté';
+} else {
+    $req = $bdd->prepare('INSERT INTO vote(id_user, id_acteur, vote) VALUES(:id_user, :id_acteur, :vote)');
+    $req->execute(array(
+        ':id_user' => $id_user,
+        ':id_acteur' => $id_acteur,
+        ':vote' => 'like'));
 }
-
 
 header("location:" . $_SERVER['HTTP_REFERER']);

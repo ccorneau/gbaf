@@ -2,7 +2,7 @@
 include('header.php');
 include('bdd.php');
 ?>
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css"> -->
 
 <body>
     <div class="card">
@@ -32,7 +32,7 @@ include('bdd.php');
                 </div>
                 <!-- form-group// -->
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary btn-block"> Connexion  </button>
+                    <button type="submit" class="btn btn-primary btn-block"> Connexion </button>
                 </div>
                 <!-- form-group// -->
                 <p class="text-center"><a href="./register.php" class="btn">S'inscrire</a> <br>
@@ -47,7 +47,7 @@ include('bdd.php');
 if (isset($_POST['username']) AND isset($_POST['password'])) {
 
     $username = $_POST['username'];
-    //  Récupération de l'utilisateur et de son pass hashé
+    //  Récupération de l'utilisateur et de son password hashé
     $req = $bdd->prepare('SELECT id_user, password, prenom, nom FROM account WHERE username = :username');
     $req->execute(array(
         'username' => $_POST['username']));
@@ -56,9 +56,9 @@ if (isset($_POST['username']) AND isset($_POST['password'])) {
     $prenom = isset($resultat['prenom']);
     $nom = isset($resultat['nom']);
 
-    // Comparaison du pass envoyé via le formulaire avec la base
+    // Comparaison du password envoyé via le formulaire avec la bdd
     $isPasswordCorrect = password_verify($_POST['password'], $resultat['password']);
-    // var_dump($isPasswordCorrect);
+    
     if (!$resultat) {
         echo '<h2>Mauvais identifiant ou mot de passe !</h2>';
     } else {
@@ -75,8 +75,6 @@ if (isset($_POST['username']) AND isset($_POST['password'])) {
         }
     }
 }
-?>
 
-<?php
 include('footer.php');
 ?>
