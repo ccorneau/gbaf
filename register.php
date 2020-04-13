@@ -94,7 +94,7 @@ include('header.php');
                 </div>
                 <!-- form-group// -->
 
-                <p class="text-center"><a href="./register.php" class="bext-muted n">S'inscrire</a> <br>
+                <p class="text-center"><a href="./login.php" class="bext-muted n">Se connecter</a> <br>
                     <a href="./forget.php" class="ext-muted ">Mot de passe oublié ?</a></p>
             </form>
         </article>
