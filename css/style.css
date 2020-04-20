@@ -106,11 +106,12 @@ label {
     font-family: "Roboto", sans-serif;
     text-transform: uppercase;
     outline: 0;
-    background: black;
+    background: #f2f2f2;
+    ;
     width: 100%;
     border: 0;
     padding: 15px 0;
-    color: #FFFFFF;
+    color: black;
     font-size: 14px;
 }
 
@@ -191,7 +192,8 @@ label {
     text-align: justify;
     padding-right: 20px;
     margin: auto;
-    max-width: 80%;
+    /* max-width: 80%; */
+    max-width: 875px;
 }
 
 .commentaire {

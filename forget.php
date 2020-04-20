@@ -3,22 +3,19 @@ include('bdd.php');
 include('header.php');
 ?>
 
-<body>
-   
-
-
-
     <div id="js" class="login-page">
         <div class="form">
         <h1>Mot de passe oublié</h1>
-            <hr>
+            <hr/>
             <p>Entrez votre identifiant</p>
 
-            <form class="login-form" action="./forget.php" method="POST">
-            <input name="username" class="form-control" placeholder="Identifiant" type="text">
-                <button>Envoyez</button>
-                <p class="message"><a href="./login.php" class="btn">Se connecter</a><br>
-                    <a href="./login.php" class="btn">Retour</a></p>
+            <form class="login-form" action="./forget.php" method="post">
+            <div>
+                <input name="username" class="form-control" placeholder="Identifiant" type="text" />
+                    <button>Envoyez</button>
+                    <p class="message"><a href="./login.php" class="btn">Se connecter</a><br/>
+                        <a href="./login.php" class="btn">Retour</a></p>
+            </div>
             </form>
         </div>
     </div>
@@ -39,33 +36,34 @@ if (isset($_POST['username'])) {
     <div class="login-page">
         <div class="form">
             <h1>Votre question secrète</h1>
-            <hr>
+            <hr/>
             <p>
                 <?php echo 'Bonjour '. $resultat['username']; ?>
             </p>
 
-            <form class="login-form" action="forget-check.php" method="POST">
-                <input type="hidden" value="<?php echo $resultat['username']; ?>" name="username2">
-                <input name="question" class="form-control" value="<?php echo $resultat['question']; ?>" type="text"> Entrez votre réponse
-                <input name="reponse" class="form-control" placeholder="Votre réponse" type="text">
-                <button>Envoyez</button>
-                <p class="message"><a href="./login.php" class="btn">Se connecter</a><br>
-                    <a href="./login.php" class="btn">Retour</a></p>
+            <form class="login-form" action="forget-check.php" method="post">
+                <div>
+                    <input type="hidden" value="<?php echo $resultat['username']; ?>" name="username2">
+                    <input name="question" class="form-control" value="<?php echo $resultat['question']; ?>" type="text" /> Entrez votre réponse
+                    <input name="reponse" class="form-control" placeholder="Votre réponse" type="text" />
+                    <button>Envoyez</button>
+                    <p class="message"><a href="./login.php" class="btn">Se connecter</a><br/>
+                        <a href="./login.php" class="btn">Retour</a></p>
+                </div>
             </form>
         </div>
     </div>
 
-
-            
-    
-            <?php
+  <?php
         } 
         
     } else {
         echo '<h2>Il n y a aucun identifiant avec ' . $_POST['username'] . '</h2>';
     }
-    ?></body> <?php 
 
-include('footer.php');
 }
 ?>
+</body>
+<?php 
+
+include('footer.php');

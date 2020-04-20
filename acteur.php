@@ -11,11 +11,11 @@ if (isset($_SESSION['username'])) {
     $req->execute(array($_GET['id_acteur']));
     $donnees = $req->fetch();
     ?>
-    <body>
+   
 
         <div class="container_page_acteur">
             <p><a href="home.php">Retour à la liste des acteurs</a></p>
-            <img class="page_acteur_logo" src="./img/<?php echo $donnees['logo']; ?>" alt="">
+            <img class="page_acteur_logo" src="./img/<?php echo $donnees['logo']; ?>" alt="<?php echo $donnees['acteur']; ?>" />
             <h1>
                 <?php echo htmlspecialchars($donnees['acteur']);?>
             </h1>
@@ -83,7 +83,7 @@ if (isset($_SESSION['username'])) {
 
                 if (!$newCommentaire){?>
                     <button id="newButton" class="acteur_button" onclick="viewButton()">Nouveau commentaire</button>
-                    <script>
+                    <script type="text/javascript">
                         function viewButton() {
                             document.getElementById("new_commentaire").style.display = "block";
                             document.getElementById("newButton").style.display = "none";
@@ -95,18 +95,20 @@ if (isset($_SESSION['username'])) {
             ?>    
             <div class="like">
                 <a style="color:green !important" href="likes.php?id_acteur=<?php echo $donnees['id_acteur']; ?>&id_user=<?php echo $idUser['id_user']; ?>"><?php echo $nbLike['nbLike']; ?><i class="fas fa-thumbs-up"></i></a> 
-                <a style="color:red !important"href="dislikes.php?id_acteur=<?php echo $donnees['id_acteur']; ?>&id_user=<?php echo $idUser['id_user']; ?>"><i class="fas fa-thumbs-down"></i><?php echo $nbDislike['nbDislike']; ?></a>
+                <a style="color:red !important" href="dislikes.php?id_acteur=<?php echo $donnees['id_acteur']; ?>&id_user=<?php echo $idUser['id_user']; ?>"><i class="fas fa-thumbs-down"></i><?php echo $nbDislike['nbDislike']; ?></a>
             </div>
         </div>
 
         <!-- Nouveau commentaire début -->
 
         <div class="form commentaire" id="new_commentaire" >
-            <form class="login-form"  action="commentaire.php" method="GET">
-                <p>Ecrivez votre commentaire</p>
-                <input type="hidden" value="<?php echo $donnees['id_acteur']; ?>" name="id_acteur">
-                <input class="form-control" name="post" placeholder="Votre commentaire" type="textarea" rows="25" cols="50">
-                <button type="submit">Publiez mon commentaire</button>
+            <form class="login-form"  action="commentaire.php" method="get">
+                <div>
+                    <p>Ecrivez votre commentaire</p>
+                    <input type="hidden" value="<?php echo $donnees['id_acteur']; ?>" name="id_acteur" />
+                    <input class="form-control" name="post" placeholder="Votre commentaire" type="textarea" rows="25" cols="50" />
+                    <button type="submit">Publiez mon commentaire</button>
+                </div>
             </form>
         </div>
 
@@ -116,7 +118,7 @@ if (isset($_SESSION['username'])) {
 
         <div class="form commentaire">
             <article class="login-form">
-                <p class="acteur_header_commentaire"><strong>Publié par : <?php echo $commentaires['prenom']; ?></strong><br> le
+                <p class="acteur_header_commentaire"><strong>Publié par : <?php echo $commentaires['prenom']; ?></strong><br/> le
                     <?php echo date("d/m/Y H:i:s",strtotime($commentaires['date_add'])); ?>
                 </p>
                 <p>
