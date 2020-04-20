@@ -4,33 +4,25 @@ include('header.php');
 ?>
 
 <body>
-    <div id="js" class="card">
-        <article class="card-body">
-            <h4 class="card-title text-center mb-4 mt-1">Mot de passe oublié</h4>
-            <hr>
-            <p class="text-muted text-center">Entrez votre identifiant</p>
-            <form action="forget.php" method="POST">
-                <div class="form-group">
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"> <i class="fa fa-user"></i> </span>
-                        </div>
-                        <input name="username" class="form-control" placeholder="Identifiant" type="text">
-                    </div>
-                    <!-- input-group.// -->
-                </div>
-                <!-- form-group// -->
+   
 
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary btn-block"> Envoyer  </button>
-                </div>
-                <!-- form-group// -->
-                <p class="text-center"><a href="./login.php" class="btn">Retour</a></p>
+
+
+    <div id="js" class="login-page">
+        <div class="form">
+        <h1>Mot de passe oublié</h1>
+            <hr>
+            <p>Entrez votre identifiant</p>
+
+            <form class="login-form" action="./forget.php" method="POST">
+            <input name="username" class="form-control" placeholder="Identifiant" type="text">
+                <button>Envoyez</button>
+                <p class="message"><a href="./login.php" class="btn">Se connecter</a><br>
+                    <a href="./login.php" class="btn">Retour</a></p>
             </form>
-        </article>
+        </div>
     </div>
-    <!-- card.// -->
-</body>
+
 
 <?php
 if (isset($_POST['username'])) {
@@ -43,47 +35,28 @@ if (isset($_POST['username'])) {
             <script type="text/javascript">
                 document.getElementById("js").style.display = "none";            
             </script>
-    
-            <div class="card">
-                <article class="card-body">
-                    <h4 class="card-title text-center mb-4 mt-1">Votre question secrète</h4>
-                    <hr>
-                    <p class="text-muted text-center">
-                        <?php echo 'Bonjour '. $resultat['username']; ?>
-                    </p>
-                    <form action="forget-check.php" method="POST">
-                        <div class="form-group"> Votre question
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"> <i class="fa fa-question"></i> </span>
-                                </div>
-                                <input type="hidden" value="<?php echo $resultat['username']; ?>" name="username2">
-                                <input name="question" class="form-control" value="<?php echo $resultat['question']; ?>" type="text">
-                            </div>
-                            <!-- input-group.// -->
-                        </div>
-                        <!-- form-group// -->
-    
-                        <div class="form-group"> Entrez votre réponse
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"> <i class="fas fa-arrow-right"></i> </span>
-                                </div>
-                                <input name="reponse" class="form-control" placeholder="Votre réponse" type="text">
-                            </div>
-                            <!-- input-group.// -->
-                        </div>
-                        <!-- form-group// -->
-    
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-primary btn-block"> Envoyez  </button>
-                        </div>
-                        <!-- form-group// -->
-                        <p class="text-center"><a href="login.php" class="btn">Retour</a></p>
-                    </form>
-                </article>
-            </div>
-            <!-- card.// -->
+
+    <div class="login-page">
+        <div class="form">
+            <h1>Votre question secrète</h1>
+            <hr>
+            <p>
+                <?php echo 'Bonjour '. $resultat['username']; ?>
+            </p>
+
+            <form class="login-form" action="forget-check.php" method="POST">
+                <input type="hidden" value="<?php echo $resultat['username']; ?>" name="username2">
+                <input name="question" class="form-control" value="<?php echo $resultat['question']; ?>" type="text"> Entrez votre réponse
+                <input name="reponse" class="form-control" placeholder="Votre réponse" type="text">
+                <button>Envoyez</button>
+                <p class="message"><a href="./login.php" class="btn">Se connecter</a><br>
+                    <a href="./login.php" class="btn">Retour</a></p>
+            </form>
+        </div>
+    </div>
+
+
+            
     
             <?php
         } 
@@ -91,7 +64,8 @@ if (isset($_POST['username'])) {
     } else {
         echo '<h2>Il n y a aucun identifiant avec ' . $_POST['username'] . '</h2>';
     }
-    
+    ?></body> <?php 
+
 include('footer.php');
 }
 ?>
