@@ -12,7 +12,7 @@ if (isset($_SESSION['username'])) {?>
 
     <?php
     // Récupération des acteurs en bdd
-    $req = $bdd->query('SELECT * FROM acteur');
+    $req = $bdd->query('SELECT id_acteur,acteur,description,logo FROM acteur');
 
     while ($donnees = $req->fetch())
     { ?>

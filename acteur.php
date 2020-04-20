@@ -7,7 +7,7 @@ include('header.php');
 if (isset($_SESSION['username'])) {
 
     // Récupération des informations de l'acteur
-    $req = $bdd->prepare('SELECT * FROM acteur WHERE id_acteur = ?');
+    $req = $bdd->prepare('SELECT id_acteur,acteur,description,logo FROM acteur WHERE id_acteur = ?');
     $req->execute(array($_GET['id_acteur']));
     $donnees = $req->fetch();
     ?>
@@ -41,7 +41,7 @@ if (isset($_SESSION['username'])) {
         $idUser = $req->fetch();
         // Fin  
 
-        $req = $bdd->prepare('SELECT *
+        $req = $bdd->prepare('SELECT id_post,id_acteur,date_add,post,nom,prenom
         FROM account
         INNER JOIN post
         ON account.id_user = post.id_user WHERE id_acteur = ? ORDER BY date_add DESC');
@@ -106,7 +106,7 @@ if (isset($_SESSION['username'])) {
                 <div>
                     <p>Ecrivez votre commentaire</p>
                     <input type="hidden" value="<?php echo $donnees['id_acteur']; ?>" name="id_acteur" />
-                    <input class="form-control" name="post" placeholder="Votre commentaire" type="textarea" rows="25" cols="50" />
+                    <input name="post" placeholder="Votre commentaire" type="textarea" rows="25" cols="50" />
                     <button type="submit">Publiez mon commentaire</button>
                 </div>
             </form>

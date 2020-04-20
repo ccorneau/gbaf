@@ -1,3 +1,4 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
 .logo_img {
     height: 200px !important;
 }
@@ -53,6 +54,7 @@ label {
     border-top: 1px solid rgba(0, 0, 0, .1);
     color: #6c757d!important;
     margin-top: 150px;
+    padding: 10px;
 }
 
 #id_connect {
@@ -113,13 +115,6 @@ label {
     padding: 15px 0;
     color: black;
     font-size: 14px;
-}
-
-.acteur_description {
-    text-align: justify;
-    padding-right: 20px;
-    margin: auto;
-    max-width: 80%;
 }
 
 
@@ -243,10 +238,6 @@ i.fas.fa-thumbs-down {
     margin: 0;
 }
 
-.like>a>i/last-child {
-    border: 5px solid green;
-}
-
 @media (max-width: 640px) {
     .acteur_container {
         flex-direction: column;
@@ -288,7 +279,6 @@ i.fas.fa-thumbs-down {
 
 /* NEWS */
 
-@import url(https://fonts.googleapis.com/css?family=Roboto:300);
 .login-page {
     width: 50%;
     min-width: 350px;
@@ -329,9 +319,6 @@ i.fas.fa-thumbs-down {
     padding: 15px;
     color: #FFFFFF;
     font-size: 14px;
-    -webkit-transition: all 0.3 ease;
-    transition: all 0.3 ease;
-    cursor: pointer;
 }
 
 .form button:hover,

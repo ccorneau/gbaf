@@ -11,7 +11,7 @@ include('header.php');
 
             <form class="login-form" action="./forget.php" method="post">
             <div>
-                <input name="username" class="form-control" placeholder="Identifiant" type="text" />
+                <input name="username" placeholder="Identifiant" type="text" />
                     <button>Envoyez</button>
                     <p class="message"><a href="./login.php" class="btn">Se connecter</a><br/>
                         <a href="./login.php" class="btn">Retour</a></p>
@@ -44,8 +44,8 @@ if (isset($_POST['username'])) {
             <form class="login-form" action="forget-check.php" method="post">
                 <div>
                     <input type="hidden" value="<?php echo $resultat['username']; ?>" name="username2">
-                    <input name="question" class="form-control" value="<?php echo $resultat['question']; ?>" type="text" /> Entrez votre réponse
-                    <input name="reponse" class="form-control" placeholder="Votre réponse" type="text" />
+                    <input name="question" value="<?php echo $resultat['question']; ?>" type="text" /> Entrez votre réponse
+                    <input name="reponse" placeholder="Votre réponse" type="text" />
                     <button>Envoyez</button>
                     <p class="message"><a href="./login.php" class="btn">Se connecter</a><br/>
                         <a href="./login.php" class="btn">Retour</a></p>
