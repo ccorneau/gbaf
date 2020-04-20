@@ -14,7 +14,7 @@ if (isset($_SESSION['username'])) {
    
 
         <div class="container_page_acteur">
-            <p><a href="home.php">Retour à la liste des acteurs</a></p>
+            <p><a href="index.php">Retour à la liste des acteurs</a></p>
             <img class="page_acteur_logo" src="./img/<?php echo $donnees['logo']; ?>" alt="<?php echo $donnees['acteur']; ?>" />
             <h1>
                 <?php echo htmlspecialchars($donnees['acteur']);?>

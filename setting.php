@@ -8,7 +8,7 @@ if (isset($_SESSION['username'])) { ?>
 
     <div class="container_page_acteur">
         <p>
-            <a href="home.php">Retour à la liste des acteurs</a>
+            <a href="index.php">Retour à la liste des acteurs</a>
         </p>
     </div>
 
@@ -66,7 +66,7 @@ if (isset($_SESSION['username'])) { ?>
 
     <?php 
 } else {
-    header('Location: home.php');
+    header('Location: index.php');
 }
 
 include('footer.php');

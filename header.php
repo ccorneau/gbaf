@@ -20,7 +20,7 @@ if (isset($_SESSION['username'])) {?>
 
     <div class="container_header">
         <div id="logo">
-            <a href="home.php"><img class="logo_img_home" src="./img/logo_GBAF.png" alt="Logo GBAF"/></a>
+            <a href="index.php"><img class="logo_img_home" src="./img/logo_GBAF.png" alt="Logo GBAF"/></a>
         </div>
         <div id="id_connect">
             <i class="fa fa-user fa-2x"></i><strong><?php echo $_SESSION['nom'] . ' ' . $_SESSION['prenom']; ?></strong>
@@ -33,7 +33,7 @@ if (isset($_SESSION['username'])) {?>
 } else { ?>
     <div class="container_home">
         <div id="logo">
-            <a href="home.php"><img class="logo_img_home" src="./img/logo_GBAF.png" alt="Logo GBAF"/></a>
+            <a href="index.php"><img class="logo_img_home" src="./img/logo_GBAF.png" alt="Logo GBAF"/></a>
         </div>
     </div>
 <?php 
