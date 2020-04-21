@@ -26,16 +26,14 @@ if (isset($_SESSION['username'])) {?>
                     <div class="acteur_description">
                         <?php echo substr($donnees['description'],0,215); ?>...
                     </div>
-                    <a href="acteur.php?id_acteur=<?php echo $donnees['id_acteur']; ?>"><button class="acteur_button">Lire la suite</button></a>
+                    <a class="acteur_button" href="acteur.php?id_acteur=<?php echo $donnees['id_acteur']; ?>">Lire la suite</a>
                 </div>
             </div>
         </div>    
     <?php
     } // Fin de la boucle des acteurs
     $req->closeCursor();
-    ?> 
-    </body>
-    <?php
+    
 } else {
     header('Location: login.php');
 }

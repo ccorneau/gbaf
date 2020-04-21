@@ -2,9 +2,11 @@
 include('bdd.php');
 include('header.php');
 
-$req = $bdd->prepare('SELECT * FROM account WHERE username = :username2');
+$username2 = htmlspecialchars($_POST['username2']);
+
+$req = $bdd->prepare('SELECT id_user, password, prenom, username, nom, question, reponse  FROM account WHERE username = :username2');
 $req->execute(array(
-    'username2' => $_POST['username2']));
+    ':username2' => $username2));
 $resultat = $req->fetch();
 
 if ($_POST['reponse'] == $resultat['reponse']) {

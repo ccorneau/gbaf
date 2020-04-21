@@ -98,6 +98,7 @@ label {
     color: #FFFFFF;
     font-size: 12px;
     border-radius: 3px;
+    color: white !important;
 }
 
 .acteur_button:hover {
@@ -117,12 +118,6 @@ label {
     font-size: 14px;
 }
 
-
-/* button {
-    float: right;
-    margin: 5px 20px;
-} */
-
 .home_login {
     text-align: center;
 }
@@ -135,27 +130,6 @@ label {
     margin: auto;
     display: flex;
     width: 80%;
-}
-
-.card {
-    max-width: 450px;
-    margin: auto;
-    margin-top: 8em;
-    margin-bottom: 10em;
-}
-
-.btn-primary {
-    background-color: #e9ecef !important;
-    border-color: #e9ecef !important;
-    border: 1px solid #ced4da !important;
-    border-radius: .25rem !important;
-    color: #495057 !important;
-}
-
-.btn-primary:hover {
-    background-color: #ff0000 !important;
-    border-color: #ff0000 !important;
-    color: white !important;
 }
 
 .input-group-text {
@@ -187,7 +161,6 @@ label {
     text-align: justify;
     padding-right: 20px;
     margin: auto;
-    /* max-width: 80%; */
     max-width: 875px;
 }
 
@@ -276,9 +249,6 @@ i.fas.fa-thumbs-down {
     }
 }
 
-
-/* NEWS */
-
 .login-page {
     width: 50%;
     min-width: 350px;
@@ -290,11 +260,10 @@ i.fas.fa-thumbs-down {
     position: relative;
     z-index: 1;
     background: #FFFFFF;
-    /* max-width: 50%; */
     margin: 0 auto 50px;
     padding: 45px;
     text-align: center;
-    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 
 .form input {
@@ -334,7 +303,6 @@ i.fas.fa-thumbs-down {
 }
 
 .form .message a {
-    color: #4CAF50;
     text-decoration: none;
 }
 
@@ -380,5 +348,5 @@ i.fas.fa-thumbs-down {
 }
 
 .container .info span .fa {
-    color: #EF3B3A;
+    color: red;
 }

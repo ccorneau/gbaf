@@ -1,4 +1,8 @@
 Site gbaf extranet bancaire
-développé par Christophe CORNEAU
+développé par Christophe CORNEAU avril 2020
 
-Vous pouvez configurer les access à la base de données à partir du fichier : config.php
+Url Github : https://github.com/ccorneau/gbaf
+
+Si vous souhaitez installer ce projet, vous pouvez télécharger le ZIP qui contient la BDD.
+
+Apres l'import de la base de donnée, vous pouvez configurer les accès BDD à partir du fichier : config.php

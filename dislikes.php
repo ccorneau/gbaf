@@ -10,7 +10,7 @@ $req->execute(array(
 $resultat = $req->fetch();
 
 if ($resultat) {
-        echo ' deja voté';
+        echo ' déjà voté';
     } else {
         $req = $bdd->prepare('INSERT INTO vote(id_user, id_acteur, vote) VALUES(:id_user, :id_acteur, :vote)');
         $req->execute(array(

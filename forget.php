@@ -8,28 +8,28 @@ include('header.php');
         <h1>Mot de passe oublié</h1>
             <hr/>
             <p>Entrez votre identifiant</p>
-
             <form class="login-form" action="./forget.php" method="post">
-            <div>
                 <input name="username" placeholder="Identifiant" type="text" />
-                    <button>Envoyez</button>
-                    <p class="message"><a href="./login.php" class="btn">Se connecter</a><br/>
-                        <a href="./login.php" class="btn">Retour</a></p>
-            </div>
+                <button>Envoyez</button>
+                <p class="message">
+                    <a href="./login.php">Se connecter</a>
+                    <br/>
+                    <a href="./login.php">Retour</a>
+                </p>
             </form>
         </div>
     </div>
 
-
 <?php
 if (isset($_POST['username'])) {
+    $username = htmlspecialchars($_POST['username']);
     $req = $bdd->prepare('SELECT username, question, reponse, password FROM account WHERE username = :username');
     $req->execute(array(
-        'username' => $_POST['username']));
+        ':username' => $username ));
     $resultat = $req->fetch();
     if($resultat){
         if ($_POST['username'] == $resultat['username']){?>
-            <script type="text/javascript">
+            <script>
                 document.getElementById("js").style.display = "none";            
             </script>
 
@@ -42,14 +42,15 @@ if (isset($_POST['username'])) {
             </p>
 
             <form class="login-form" action="forget-check.php" method="post">
-                <div>
-                    <input type="hidden" value="<?php echo $resultat['username']; ?>" name="username2">
-                    <input name="question" value="<?php echo $resultat['question']; ?>" type="text" /> Entrez votre réponse
-                    <input name="reponse" placeholder="Votre réponse" type="text" />
-                    <button>Envoyez</button>
-                    <p class="message"><a href="./login.php" class="btn">Se connecter</a><br/>
-                        <a href="./login.php" class="btn">Retour</a></p>
-                </div>
+                <input type="hidden" value="<?php echo $resultat['username']; ?>" name="username2">
+                <input name="question" value="<?php echo $resultat['question']; ?>" type="text" /> Entrez votre réponse
+                <input name="reponse" placeholder="Votre réponse" type="text" />
+                <button>Envoyez</button>
+                <p class="message">
+                    <a href="./login.php">Se connecter</a>
+                    <br/>
+                    <a href="./login.php">Retour</a>
+                </p>
             </form>
         </div>
     </div>
@@ -62,8 +63,5 @@ if (isset($_POST['username'])) {
     }
 
 }
-?>
-</body>
-<?php 
 
 include('footer.php');

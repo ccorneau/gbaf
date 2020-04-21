@@ -26,7 +26,7 @@ if ($_POST['password'] == $_POST['password2']) {
     $stmt= $bdd->prepare($sql);
     $stmt->execute($data);
 
-    header('Location: ./home.php');
+    header('Location: ./index.php');
     } else {
         $errorPassword = 'Vérifiez votre mot de passe car ils ne sont pas identique';
         $_SESSION['error'] = $errorPassword;

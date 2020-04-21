@@ -3,34 +3,32 @@ include('header.php');
 include('bdd.php');
 ?>
 
-
     <div class="login-page">
         <div class="form">
             <h1>Connexion</h1>
             <hr/>
             <p>Veuillez vous authentifier</p>
-
             <form class="login-form" action="login.php" method="post">
-                <div>
-                    <input name="username" type="text" placeholder="Identifiant" />
-                    <input name="password" type="password" placeholder="Mot de passe" />
-                    <button>Connexion</button>
-                    <p class="message"><a href="./register.php" class="btn">S'inscrire</a><br/>
-                        <a href="./forget.php" class="btn">Mot de passe oublié ?</a></p>
-                </div>
+                <input name="username" type="text" placeholder="Identifiant" />
+                <input name="password" type="password" placeholder="Mot de passe" />
+                <button>Connexion</button>
+                <p class="message">
+                    <a href="./register.php">S'inscrire</a>
+                    <br/>
+                    <a href="./forget.php">Mot de passe oublié ?</a>
+                </p>
             </form>
         </div>
     </div>
-</body>
 
 <?php 
 if (isset($_POST['username']) AND isset($_POST['password'])) {
 
-    $username = $_POST['username'];
+    $username = htmlspecialchars($_POST['username']);
     //  Récupération de l'utilisateur et de son password hashé
     $req = $bdd->prepare('SELECT id_user, password, prenom, nom FROM account WHERE username = :username');
     $req->execute(array(
-        'username' => $_POST['username']));
+        ':username' => $username));
     $resultat = $req->fetch();
 
     $prenom = isset($resultat['prenom']);
