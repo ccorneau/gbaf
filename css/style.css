@@ -110,12 +110,13 @@ label {
     text-transform: uppercase;
     outline: 0;
     background: #f2f2f2;
-    ;
     width: 100%;
     border: 0;
     padding: 15px 0;
     color: black;
     font-size: 14px;
+    position: relative;
+    top: -14px;
 }
 
 .home_login {
@@ -159,7 +160,7 @@ label {
 
 .container_page_acteur {
     text-align: justify;
-    padding-right: 20px;
+    padding: 20px;
     margin: auto;
     max-width: 875px;
 }
@@ -167,6 +168,16 @@ label {
 .commentaire {
     margin: 10px auto;
     max-width: 875px;
+    border: 1px solid gray;
+    position: relative;
+    background: #FFFFFF;
+    margin: 0 auto 50px;
+    text-align: center;
+}
+
+.nbCommentaire>h2 {
+    font-size: 12px;
+    text-transform: uppercase;
 }
 
 .container_link {
@@ -186,8 +197,11 @@ label {
 }
 
 #new_commentaire {
-    display: none;
-    height: 200px;
+    position: relative;
+    background: #FFFFFF;
+    margin: 0 auto 50px;
+    padding: 0px;
+    text-align: center;
 }
 
 
@@ -246,6 +260,9 @@ i.fas.fa-thumbs-down {
     }
     .login-page {
         width: 80%;
+    }
+    .like {
+        width: 10%;
     }
 }
 
